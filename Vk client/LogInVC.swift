@@ -10,7 +10,7 @@ import WebKit
 
 class LogInVC: UIViewController {
     
-    var menuVC: MenuVC?
+    let session = Session.instance
 
     @IBOutlet weak var webView: WKWebView! {
         didSet{
@@ -30,6 +30,7 @@ class LogInVC: UIViewController {
             URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
             URLQueryItem(name: "display", value: "mobile"),
             URLQueryItem(name: "response_type", value: "token"),
+            URLQueryItem(name: "scope", value: "photos")
         ]
         let request = URLRequest(url: urlCons.url!)
         webView.load(request)
@@ -56,12 +57,11 @@ extension LogInVC: WKNavigationDelegate {
                 dict[key] = value
                 return dict
             }
-        let session = Session.instance
-        session.token = params["access_token"]!
-        session.userId = Int(params["user_id"]!) ?? 0
         
-        menuVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "menu") as? MenuVC
-        self.view.insertSubview((menuVC?.view)!, at: 10)
+        session.token = params["access_token"] ?? ""
+        session.userId = Int(params["user_id"] ?? "0") ?? 0
+        
+        performSegue(withIdentifier: "showMenu", sender: nil)
         decisionHandler(.cancel)
     }
 }
