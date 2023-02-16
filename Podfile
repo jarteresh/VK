@@ -6,6 +6,7 @@ target 'Vk client' do
   use_frameworks!
 	pod "Alamofire"
 	pod 'SDWebImageSwiftUI'
+	pod 'RealmSwift'
   # Pods for Vk client
 
 end

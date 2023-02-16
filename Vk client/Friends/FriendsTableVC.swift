@@ -15,7 +15,7 @@ class FriendsTableVC: UITableViewController {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "FriendsTableViewCell", bundle: nil), forCellReuseIdentifier: "FriendsCell")
         Service().getFriends { data in
-            self.users = data.response.items
+            self.users = data.users
             self.tableView.reloadData()
         }
     }

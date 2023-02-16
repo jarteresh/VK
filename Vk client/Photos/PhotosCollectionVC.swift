@@ -18,12 +18,8 @@ class PhotosCollectionVC: UICollectionViewController {
         super.viewDidLoad()
         self.collectionView!.register(UINib(nibName: "PhotosCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
         Service().getPhotos(forUser: userId) { data in
-            var pictures: [Photo] = []
-            for picture in data.response.items {
-                pictures.append(picture.photo[3])
-            }
+            self.userPhotos = data.photos
             self.collectionView.reloadData()
-            self.userPhotos = pictures
         }
 
     }

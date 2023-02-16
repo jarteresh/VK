@@ -5,20 +5,37 @@
 //  Created by Ярослав on 03.02.2023.
 //
 
+import RealmSwift
 import Foundation
 
-struct DataForGroup: Decodable{
-    let response: ResponceForGroup
-}
-struct ResponceForGroup: Decodable {
-    let count: Int
-    let items: [Group]
+class Groups: Decodable {
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        let response =  try container.nestedContainer(keyedBy: ResponseKeys.self, forKey: .response)
+        
+        self.count = try response.decode(Int.self, forKey: .count)
+        self.groups = try response.decode([Group].self, forKey: .items)
+    }
+    
+    var count: Int
+    var groups: [Group]
+    
+    enum CodingKeys: CodingKey {
+        case response
+    }
+    
+    enum ResponseKeys: CodingKey {
+        case count
+        case items
+    }
 }
 
-struct Group: Decodable {
-    let id: Int
-    let name: String
-    let avatar: String
+class Group: Object, Decodable {
+    @Persisted var id: Int
+    @Persisted var name: String
+    @Persisted var avatar: String
+    
     enum CodingKeys: String, CodingKey {
         case id
         case name

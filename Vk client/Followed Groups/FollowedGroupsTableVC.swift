@@ -17,7 +17,7 @@ class FollowedGroupsTableVC: UITableViewController {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "FollowedGroupsTableViewCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
         Service().getGroups { data in
-            self.followedGroups = data.response.items
+            self.followedGroups = data.groups
             self.tableView.reloadData()
         }
     }

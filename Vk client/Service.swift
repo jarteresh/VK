@@ -7,13 +7,14 @@
 
 import Foundation
 import Alamofire
+import RealmSwift
 
 class Service {
     
     let baseUrl = "https://api.vk.com/method"
     let session = Session.instance
     
-    func getFriends(completion: @escaping (DataForUser) -> Void)  {
+    func getFriends(completion: @escaping (Users) -> Void)  {
         let url = baseUrl + "/friends.get"
         
         let param: Parameters = [
@@ -30,7 +31,8 @@ class Service {
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             do {
-                let data = try decoder.decode(DataForUser.self,from: data)
+                let data = try decoder.decode(Users.self,from: data)
+                self.saveUserData(data: data.users)
                 completion(data)
             } catch {
                 print(error)
@@ -38,9 +40,9 @@ class Service {
         }
     }
     
-    func getPhotos(forUser userId: Int, completion: @escaping (DataForPhoto) -> Void){
+    func getPhotos(forUser userId: Int, completion: @escaping (Photos) -> Void){
         let url = baseUrl + "/photos.getAll"
-        
+
         let param: Parameters = [
             "access_token": session.token,
             "v": "5.131",
@@ -52,7 +54,7 @@ class Service {
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             do {
-                let data = try decoder.decode(DataForPhoto.self,from: data)
+                let data = try decoder.decode(Photos.self,from: data)
                 completion(data)
             } catch {
                 print(error)
@@ -60,7 +62,7 @@ class Service {
         }
     }
     
-    func getGroups(completion: @escaping (DataForGroup) -> Void) {
+    func getGroups(completion: @escaping (Groups) -> Void) {
         let url = baseUrl + "/groups.get"
         
         let param: Parameters = [
@@ -75,7 +77,7 @@ class Service {
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             do {
-                let data = try decoder.decode(DataForGroup.self,from: data)
+                let data = try decoder.decode(Groups.self,from: data)
                 completion(data)
             } catch {
                 print(error)
@@ -83,7 +85,7 @@ class Service {
         }
     }
     
-    func getGroupsBySearch(forName name: String, completion: @escaping (DataForGroup) -> Void) {
+    func getGroupsBySearch(forName name: String, completion: @escaping (Groups) -> Void) {
         let url = baseUrl + "/groups.search"
         
         let param: Parameters = [
@@ -98,7 +100,7 @@ class Service {
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             do {
-                let data = try decoder.decode(DataForGroup.self,from: data)
+                let data = try decoder.decode(Groups.self,from: data)
                 completion(data)
             } catch {
                 print(error)
@@ -111,6 +113,19 @@ class Service {
         URLSession.shared.dataTask(with: url!) { (data, response, error) in
             completion(UIImage(data: data ?? Data()) ?? UIImage())
         }.resume()
+    }
+    
+    func saveUserData(data: [User]) {
+        do {
+            let realm = try Realm()
+            
+            realm.beginWrite()
+            realm.add(data)
+            
+            try realm.commitWrite()
+        } catch {
+            print(error)
+        }
     }
 }
 

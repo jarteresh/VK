@@ -17,7 +17,7 @@ class AllGroupsTableVC: UITableViewController {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "AllGroupsTableViewCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
         Service().getGroupsBySearch(forName: "Apple") { data in
-            self.displayedGroups = data.response.items
+            self.displayedGroups = data.groups
             self.tableView.reloadData()
         }
     }
