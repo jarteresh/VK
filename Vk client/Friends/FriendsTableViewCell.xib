@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FriendsCell" id="KGk-i7-Jjw" customClass="FriendsTableViewCell" customModule="Vk_client" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Терещенко Ярослав" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vuv-um-7Xk">
+                        <rect key="frame" x="10" y="15" width="161.66666666666666" height="30"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y49-mb-m4f" customClass="AvatarView" customModule="Vk_client" customModuleProvider="target">
+                        <rect key="frame" x="265" y="5" width="50" height="50"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="5qV-MG-wR5"/>
+                            <constraint firstAttribute="height" constant="50" id="XhR-p6-X2r"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="y49-mb-m4f" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="3Zw-cu-kro"/>
+                    <constraint firstItem="Vuv-um-7Xk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="DCn-NA-D8K"/>
+                    <constraint firstItem="Vuv-um-7Xk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="JOs-DL-mP5"/>
+                    <constraint firstAttribute="bottom" secondItem="Vuv-um-7Xk" secondAttribute="bottom" constant="15" id="dsX-XG-xLn"/>
+                    <constraint firstAttribute="trailing" secondItem="y49-mb-m4f" secondAttribute="trailing" constant="5" id="hxK-My-3s1"/>
+                    <constraint firstAttribute="bottom" secondItem="y49-mb-m4f" secondAttribute="bottom" constant="5" id="klF-Tf-QrQ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="avatar" destination="y49-mb-m4f" id="3xV-0E-uuS"/>
+                <outlet property="name" destination="Vuv-um-7Xk" id="LZZ-2w-Jwr"/>
+            </connections>
+            <point key="canvasLocation" x="138.93129770992365" y="19.718309859154932"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
