@@ -6,20 +6,24 @@
 //
 
 import UIKit
+import RealmSwift
 
 class FollowedGroupsTableVC: UITableViewController {
     
-    var followedGroups: [Group]? = nil
+    var followedGroups: [RealmGroup]? = nil
+    let realm = try! Realm()
+    let refresh = UIRefreshControl()
     
     private let reuseIdentifier = "FollowedGroupsCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "FollowedGroupsTableViewCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
-        Service().getGroups { data in
-            self.followedGroups = data.groups
-            self.tableView.reloadData()
+        if let groups = realm.objects(RealmGroups.self).first?.groups {
+            followedGroups = Array(groups)
         }
+        refresh.addTarget(self, action: #selector(update(_ :)), for: .valueChanged)
+        tableView.addSubview(refresh)
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -55,5 +59,15 @@ class FollowedGroupsTableVC: UITableViewController {
             followedGroups?.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
+    }
+    
+    @objc func update(_ sender: AnyObject) {
+        Service().getGroups {
+            if let groups = self.realm.objects(RealmGroups.self).first?.groups {
+                self.followedGroups = Array(groups)
+            }
+            self.tableView.reloadData()
+        }
+        refresh.endRefreshing()
     }
 }

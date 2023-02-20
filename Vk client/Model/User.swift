@@ -8,9 +8,12 @@
 import RealmSwift
 import Foundation
 
-class Users: Decodable {
+final class Users: Decodable {
     
-    required init(from decoder: Decoder) throws {
+    let users: [User]
+    let count: Int
+    
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
         let response = try container.nestedContainer(keyedBy: ReponseKeys.self, forKey: .response)
@@ -18,9 +21,6 @@ class Users: Decodable {
         self.count =  try response.decode(Int.self, forKey: .count)
         self.users = try response.decode([User].self, forKey: .items)
     }
-    
-    var users: [User]
-    var count: Int
     
     enum CodingKeys: String, CodingKey {
         case response
@@ -32,11 +32,11 @@ class Users: Decodable {
     }
 }
 
-class User: Object, Decodable {
-    @Persisted var firstName: String
-    @Persisted var lastName: String
-    @Persisted var id: Int
-    @Persisted var avatar: String
+class User: Decodable {
+    let firstName: String
+    let lastName: String
+    let id: Int
+    let avatar: String
     
     enum CodingKeys: String, CodingKey {
         case firstName

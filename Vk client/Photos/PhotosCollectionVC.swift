@@ -6,22 +6,27 @@
 //
 
 import UIKit
+import RealmSwift
 
 private let reuseIdentifier = "PhotosCell"
 
 class PhotosCollectionVC: UICollectionViewController {
     
     var userId: Int = 0
-    var userPhotos: [Photo]? = nil
+    var userPhotos: [RealmPhoto]? = nil
+    let realm = try! Realm()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         self.collectionView!.register(UINib(nibName: "PhotosCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
-        Service().getPhotos(forUser: userId) { data in
-            self.userPhotos = data.photos
+        
+        Service().getPhotos(forUser: userId) {
+            self.userPhotos = self.realm.objects(RealmPhoto.self).filter {
+                $0.ownerId == self.userId
+            }
             self.collectionView.reloadData()
         }
-
     }
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -49,4 +54,14 @@ class PhotosCollectionVC: UICollectionViewController {
         
         return cell
     }
+    
+//    @objc func update(_ sender: AnyObject) {
+//        Service().getPhotos(forUser: userId) {
+//            if let photos = self.realm.objects(RealmPhotos.self).first?.photos {
+//                self.userPhotos = Array(photos)
+//            }
+//            self.collectionView.reloadData()
+//        }
+//        refresh.endRefreshing()
+//    }
 }

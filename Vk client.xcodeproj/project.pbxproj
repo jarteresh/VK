@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BCC1A325A269439F0946BB6C /* Pods_Vk_client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B736A5FD8392904F360AA2B4 /* Pods_Vk_client.framework */; };
+		D535171529A3098E00D58881 /* Realm Objects.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535171429A3098E00D58881 /* Realm Objects.swift */; };
 		D543ABEE2985BEA200FA7D32 /* LogInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D543ABED2985BEA200FA7D32 /* LogInVC.swift */; };
 		D543ABF02985F85F00FA7D32 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = D543ABEF2985F85F00FA7D32 /* Service.swift */; };
 		D566761229953A3000931530 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D566761129953A3000931530 /* Photo.swift */; };
@@ -41,6 +42,7 @@
 		142CDB8E2519E257BD26DBB5 /* Pods-Vk client.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vk client.release.xcconfig"; path = "Target Support Files/Pods-Vk client/Pods-Vk client.release.xcconfig"; sourceTree = "<group>"; };
 		5724BE45467EAACDBC2629E9 /* Pods-Vk client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vk client.debug.xcconfig"; path = "Target Support Files/Pods-Vk client/Pods-Vk client.debug.xcconfig"; sourceTree = "<group>"; };
 		B736A5FD8392904F360AA2B4 /* Pods_Vk_client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Vk_client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D535171429A3098E00D58881 /* Realm Objects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Realm Objects.swift"; sourceTree = "<group>"; };
 		D543ABED2985BEA200FA7D32 /* LogInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInVC.swift; sourceTree = "<group>"; };
 		D543ABEF2985F85F00FA7D32 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		D566761129953A3000931530 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				D5E167E0298B1AC1007FF9D6 /* User.swift */,
 				D566761129953A3000931530 /* Photo.swift */,
 				D56EC941298C9A2A00DA9B30 /* Group.swift */,
+				D535171429A3098E00D58881 /* Realm Objects.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				D5719ECB298470EB00384DC1 /* Vk_client.xcdatamodeld in Sources */,
 				D5719EC1298470EB00384DC1 /* AppDelegate.swift in Sources */,
 				D5E167EB298B4A50007FF9D6 /* PhotosCollectionViewCell.swift in Sources */,
+				D535171529A3098E00D58881 /* Realm Objects.swift in Sources */,
 				D5ABDA032998694A00224D87 /* AvatarView.swift in Sources */,
 				D5ABD9FF2998507B00224D87 /* GradientView.swift in Sources */,
 				D5E167D8298AF48A007FF9D6 /* FriendsTableVC.swift in Sources */,

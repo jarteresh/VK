@@ -8,9 +8,9 @@
 import RealmSwift
 import Foundation
 
-class Photos: Decodable {
+final class Photos: Decodable {
 
-    required init(from decoder: Decoder) throws {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
         let responce = try container.nestedContainer(keyedBy: ResponseKeys.self, forKey: .response)
@@ -20,8 +20,9 @@ class Photos: Decodable {
         self.photos = try responce.decode([Photo].self, forKey: .items)
     }
     
-    var count: Int
-    var photos: [Photo]
+    let count: Int
+    let photos: [Photo]
+    
 
     enum CodingKeys: CodingKey {
         case response
@@ -33,9 +34,9 @@ class Photos: Decodable {
     }
 }
 
-class Photo: Decodable {
+final class Photo: Decodable {
     
-    required init(from decoder: Decoder) throws {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.albumId = try container.decode(Int.self, forKey: .albumId)
         self.date = try container.decode(Int.self, forKey: .date)
@@ -49,13 +50,13 @@ class Photo: Decodable {
         self.url = sizes[3].url
     }
     
-    var albumId: Int
-    var date: Int
-    var id: Int
-    var ownerId: Int
-    var height: Int
-    var width: Int
-    var url: String
+    let albumId: Int
+    let date: Int
+    let id: Int
+    let ownerId: Int
+    let height: Int
+    let width: Int
+    let url: String
     
     enum CodingKeys: String, CodingKey {
         case albumId
@@ -66,8 +67,10 @@ class Photo: Decodable {
     }
 }
 
-class Sizes: Object, Decodable {
-    @Persisted var height: Int
-    @Persisted var width: Int
-    @Persisted var url: String
+class Sizes: Decodable {
+    var height: Int
+    var width: Int
+    var url: String
 }
+
+
