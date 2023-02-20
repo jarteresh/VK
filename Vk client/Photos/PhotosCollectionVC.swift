@@ -55,13 +55,13 @@ class PhotosCollectionVC: UICollectionViewController {
         return cell
     }
     
-//    @objc func update(_ sender: AnyObject) {
-//        Service().getPhotos(forUser: userId) {
-//            if let photos = self.realm.objects(RealmPhotos.self).first?.photos {
-//                self.userPhotos = Array(photos)
-//            }
-//            self.collectionView.reloadData()
-//        }
-//        refresh.endRefreshing()
-//    }
+    @objc func update(_ sender: AnyObject) {
+        Service().getPhotos(forUser: userId) {
+            if let photos = self.realm.objects(RealmPhotos.self).first?.photos {
+                self.userPhotos = Array(photos)
+            }
+            self.collectionView.reloadData()
+        }
+        //refresh.endRefreshing()
+    }
 }
