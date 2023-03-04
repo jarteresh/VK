@@ -30,6 +30,7 @@
 		D5ABD9FF2998507B00224D87 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ABD9FE2998507B00224D87 /* GradientView.swift */; };
 		D5ABDA032998694A00224D87 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ABDA022998694A00224D87 /* AvatarView.swift */; };
 		D5ABDA05299987D600224D87 /* LikeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ABDA04299987D600224D87 /* LikeControl.swift */; };
+		D5CFE32829B3E13B00C9A07B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D5CFE32729B3E13A00C9A07B /* GoogleService-Info.plist */; };
 		D5E167D8298AF48A007FF9D6 /* FriendsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E167D7298AF48A007FF9D6 /* FriendsTableVC.swift */; };
 		D5E167DD298AF4D9007FF9D6 /* FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E167DB298AF4D9007FF9D6 /* FriendsTableViewCell.swift */; };
 		D5E167DE298AF4D9007FF9D6 /* FriendsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5E167DC298AF4D9007FF9D6 /* FriendsTableViewCell.xib */; };
@@ -65,6 +66,7 @@
 		D5ABD9FE2998507B00224D87 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		D5ABDA022998694A00224D87 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		D5ABDA04299987D600224D87 /* LikeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeControl.swift; sourceTree = "<group>"; };
+		D5CFE32729B3E13A00C9A07B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D5E167D7298AF48A007FF9D6 /* FriendsTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableVC.swift; sourceTree = "<group>"; };
 		D5E167DB298AF4D9007FF9D6 /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewCell.swift; sourceTree = "<group>"; };
 		D5E167DC298AF4D9007FF9D6 /* FriendsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendsTableViewCell.xib; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				D5719EC2298470EB00384DC1 /* SceneDelegate.swift */,
 				D5719EC0298470EB00384DC1 /* AppDelegate.swift */,
 				D5719ED1298470EC00384DC1 /* Info.plist */,
+				D5CFE32729B3E13A00C9A07B /* GoogleService-Info.plist */,
 				D5719EC9298470EB00384DC1 /* Vk_client.xcdatamodeld */,
 				D5719ECC298470EC00384DC1 /* Assets.xcassets */,
 			);
@@ -266,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5719ED0298470EC00384DC1 /* LaunchScreen.storyboard in Resources */,
+				D5CFE32829B3E13B00C9A07B /* GoogleService-Info.plist in Resources */,
 				D56EC949298CA35E00DA9B30 /* AllGroupsTableViewCell.xib in Resources */,
 				D56EC939298C90B000DA9B30 /* PhotosCollectionViewCell.xib in Resources */,
 				D5719ECD298470EC00384DC1 /* Assets.xcassets in Resources */,

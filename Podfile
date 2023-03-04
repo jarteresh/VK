@@ -7,6 +7,7 @@ target 'Vk client' do
 	pod "Alamofire"
 	pod 'SDWebImageSwiftUI'
 	pod 'RealmSwift'
+	pod 'Firebase/Core'
   # Pods for Vk client
 
 end

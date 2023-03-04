@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImageSwiftUI
 
 class AllGroupsTableVC: UITableViewController {
     
@@ -27,11 +28,7 @@ class AllGroupsTableVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let groups = displayedGroups{
-            return groups.count
-        } else {
-            return 0
-        }
+        return displayedGroups?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -40,12 +37,7 @@ class AllGroupsTableVC: UITableViewController {
         guard let groups = displayedGroups else {return cell}
         let group = groups[indexPath.row]
         
-        Service().getPhoto(fromUrl: group.avatar) { groupPhoto in
-            DispatchQueue.main.async {
-                cell.avatar.image = groupPhoto
-            }
-        }
-        
+        cell.avatar.imageView.sd_setImage(with: URL(string: group.avatar))
         cell.name.text = group.name
         return cell
     }

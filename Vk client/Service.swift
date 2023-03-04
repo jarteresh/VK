@@ -15,7 +15,7 @@ class Service {
     let session = Session.instance
     let realm = try! Realm()
     
-    func getFriends(completion: @escaping () -> Void)  {
+    func getFriends()  {
         let url = baseUrl + "/friends.get"
         
         let param: Parameters = [
@@ -25,7 +25,7 @@ class Service {
             "order": "hints",
             "fields": "photo_100"
         ]
-        AF.request(url, method: .get, parameters: param).responseData {response in
+        AF.request(url, method: .get, parameters: param).responseData { response in
             
             guard let data = response.value else {return}
             
@@ -34,14 +34,13 @@ class Service {
             do {
                 let data = try decoder.decode(Users.self,from: data)
                 self.saveUsers(users: data)
-                completion()
             } catch {
                 print(error)
             }
         }
     }
     
-    func getPhotos(forUser userId: Int, completion: @escaping () -> Void){
+    func getPhotos(forUser userId: Int) {
         let url = baseUrl + "/photos.getAll"
         
         let param: Parameters = [
@@ -57,15 +56,13 @@ class Service {
             do {
                 let data = try decoder.decode(Photos.self,from: data)
                 self.savePhotos(photos: data, ownerId: data.photos.first?.ownerId ?? 0)
-                
-                completion()
             } catch {
                 print(error)
             }
         }
     }
     
-    func getGroups(completion: @escaping () -> Void) {
+    func getGroups() {
         let url = baseUrl + "/groups.get"
         
         let param: Parameters = [
@@ -82,7 +79,6 @@ class Service {
             do {
                 let data = try decoder.decode(Groups.self,from: data)
                 self.saveGroups(groups: data)
-                completion()
             } catch {
                 print(error)
             }
@@ -112,13 +108,6 @@ class Service {
         }
     }
     
-    func getPhoto(fromUrl urlString: String, completion: @escaping (UIImage) -> Void) {
-        let url = URL(string: urlString)
-        URLSession.shared.dataTask(with: url!) { (data, response, error) in
-            completion(UIImage(data: data ?? Data()) ?? UIImage())
-        }.resume()
-    }
-    
     func saveUsers(users: Users) {
         let allUsers = realm.objects(RealmUsers.self)
         let allUser = realm.objects(RealmUser.self)
@@ -139,7 +128,7 @@ class Service {
             print(error)
         }
     }
-
+    
     func saveGroups(groups: Groups) {
         let allGroups = realm.objects(RealmGroups.self)
         let allGroup = realm.objects(RealmGroup.self)
@@ -160,7 +149,7 @@ class Service {
             print(error)
         }
     }
-
+    
     func savePhotos(photos: Photos, ownerId: Int) {
         let allPhoto = realm.objects(RealmPhoto.self).filter {
             $0.ownerId == ownerId
@@ -179,7 +168,7 @@ class Service {
             print(error)
         }
     }
-
+    
     func convertToRealmUsers(from users: Users) -> RealmUsers {
         let realmUsers = RealmUsers()
         realmUsers.count = users.count
