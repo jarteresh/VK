@@ -7,22 +7,23 @@
 
 import UIKit
 import RealmSwift
+import SDWebImageSwiftUI
 
 class FollowedGroupsTableVC: UITableViewController {
     
-    var followedGroups: [RealmGroup]? = nil
+    var followedGroups: Results<RealmGroup>?
     let realm = try! Realm()
     let refresh = UIRefreshControl()
+    var token: NotificationToken?
     
     private let reuseIdentifier = "FollowedGroupsCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "FollowedGroupsTableViewCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
-        if let groups = realm.objects(RealmGroups.self).first?.groups {
-            followedGroups = Array(groups)
-        }
-        refresh.addTarget(self, action: #selector(update(_ :)), for: .valueChanged)
+        Service().getGroups()
+        pairTableViewWithRealm()
+        refresh.addTarget(self, action: #selector(updateTableView(_ :)), for: .valueChanged)
         tableView.addSubview(refresh)
     }
     
@@ -31,11 +32,7 @@ class FollowedGroupsTableVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let groups = followedGroups {
-            return groups.count
-        } else {
-            return 0
-        }
+        return followedGroups?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -44,30 +41,43 @@ class FollowedGroupsTableVC: UITableViewController {
         guard let groups = followedGroups else {return cell}
         let group = groups[indexPath.row]
         
-        Service().getPhoto(fromUrl: group.avatar) { groupPhoto in
-            DispatchQueue.main.async {
-                cell.avatar.image = groupPhoto
-            }
-        }
-        
+        cell.avatar.imageView.sd_setImage(with: URL(string: group.avatar))
         cell.name.text = group.name
         return cell
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            followedGroups?.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            do {
+                 try realm.write {
+                    realm.delete(followedGroups![indexPath.row])
+                }
+            } catch {
+                print(error)
+            }
         }
     }
     
-    @objc func update(_ sender: AnyObject) {
-        Service().getGroups {
-            if let groups = self.realm.objects(RealmGroups.self).first?.groups {
-                self.followedGroups = Array(groups)
+    func pairTableViewWithRealm() {
+        followedGroups = realm.objects(RealmGroup.self)
+        token = followedGroups?.observe { (changes: RealmCollectionChange) in
+            switch changes {
+            case .initial:
+                self.tableView.reloadData()
+            case .update(_, deletions: let deletions, insertions: let insertions, modifications: let modifications):
+                self.tableView.beginUpdates()
+                self.tableView.insertRows(at: insertions.map({IndexPath(row: $0, section: 0)}), with: .automatic)
+                self.tableView.deleteRows(at: deletions.map({IndexPath(row: $0, section: 0)}), with: .automatic)
+                self.tableView.reloadRows(at: modifications.map({IndexPath(row: $0, section: 0)}), with: .automatic)
+                self.tableView.endUpdates()
+            case .error(let error):
+                print(error)
             }
-            self.tableView.reloadData()
         }
+    }
+    
+    @objc func updateTableView(_ sender: AnyObject) {
+        Service().getGroups()
         refresh.endRefreshing()
     }
 }

@@ -43,3 +43,4 @@ class Group: Decodable {
         case avatar = "photo100"
     }
 }
+

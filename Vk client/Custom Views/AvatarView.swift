@@ -28,11 +28,13 @@ class AvatarView: UIView {
     }
     
 
-    var image: UIImage? = UIImage() {
+    var image = UIImage() {
         didSet {
             createImageView()
         }
     }
+    
+    var imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -41,7 +43,6 @@ class AvatarView: UIView {
     }
     
     func createImageView() {
-        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         imageView.layer.cornerRadius = 25
         imageView.layer.masksToBounds = true
         imageView.image = image
