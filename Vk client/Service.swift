@@ -8,6 +8,7 @@
 import Foundation
 import Alamofire
 import RealmSwift
+import Firebase
 
 class Service {
     
@@ -212,5 +213,47 @@ class Service {
             realmPhotos.photos.append(realmPhoto)
         }
         return realmPhotos
+    }
+    
+    
+    func regNewUser(password: String, email: String, completion: @escaping (Bool) -> ()) {
+        Auth.auth().createUser(withEmail: email, password: password) { res, error in
+            if error == nil {
+                if let res = res {
+                    res.user.sendEmailVerification()
+                    self.saveUserData(userId: res.user.uid, email: email)
+                }
+                completion(true)
+            } else {
+                completion(false)
+            }
+        }
+    }
+    
+    func saveUserData(userId: String, email: String) {
+        let userData: [String: Any] = [
+            "email": email,
+            "groups": ""
+        ]
+        
+        Firestore.firestore().collection("users").document(userId).setData(userData)
+    }
+    
+    func logIn(email: String, password: String, completion: @escaping (Bool) -> ()) {
+        Auth.auth().signIn(withEmail: email, password: password) { res, error in
+            if error == nil {
+                if res != nil {
+                    completion(true)
+                }
+            } else {
+                completion(false)
+            }
+        }
+    }
+    
+    func saveAddedGroup(group: String) {
+        let uid = Auth.auth().currentUser!.uid
+        Firestore.firestore().collection("users").document(uid).collection("groups").document(group).setData(["name":group])
+
     }
 }

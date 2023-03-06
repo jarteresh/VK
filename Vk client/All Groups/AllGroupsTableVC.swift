@@ -10,7 +10,9 @@ import SDWebImageSwiftUI
 
 class AllGroupsTableVC: UITableViewController {
     
-    private var displayedGroups: [Group]? = nil
+    var displayedGroups: [Group]?
+    
+    let service = Service()
     
     private let reuseIdentifier = "AllGroupsCell"
     
@@ -42,9 +44,10 @@ class AllGroupsTableVC: UITableViewController {
         return cell
     }
     
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        performSegue(withIdentifier: "followGroup", sender: indexPath)
-//    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        service.saveAddedGroup(group: displayedGroups![indexPath.row].name)
+        self.navigationController?.popViewController(animated: true)
+    }
 //
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        guard segue.identifier == "followGroup",

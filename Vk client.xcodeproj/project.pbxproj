@@ -30,13 +30,19 @@
 		D5ABD9FF2998507B00224D87 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ABD9FE2998507B00224D87 /* GradientView.swift */; };
 		D5ABDA032998694A00224D87 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ABDA022998694A00224D87 /* AvatarView.swift */; };
 		D5ABDA05299987D600224D87 /* LikeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ABDA04299987D600224D87 /* LikeControl.swift */; };
-		D5CFE32829B3E13B00C9A07B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D5CFE32729B3E13A00C9A07B /* GoogleService-Info.plist */; };
+		D5CFE32A29B41C6600C9A07B /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CFE32929B41C6600C9A07B /* AuthViewController.swift */; };
 		D5E167D8298AF48A007FF9D6 /* FriendsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E167D7298AF48A007FF9D6 /* FriendsTableVC.swift */; };
 		D5E167DD298AF4D9007FF9D6 /* FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E167DB298AF4D9007FF9D6 /* FriendsTableViewCell.swift */; };
 		D5E167DE298AF4D9007FF9D6 /* FriendsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5E167DC298AF4D9007FF9D6 /* FriendsTableViewCell.xib */; };
 		D5E167E1298B1AC1007FF9D6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E167E0298B1AC1007FF9D6 /* User.swift */; };
 		D5E167E4298B49CC007FF9D6 /* PhotosCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E167E3298B49CC007FF9D6 /* PhotosCollectionVC.swift */; };
 		D5E167EB298B4A50007FF9D6 /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E167E9298B4A50007FF9D6 /* PhotosCollectionViewCell.swift */; };
+		D5ECDBF529B4D592008F37AE /* RegViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ECDBF429B4D592008F37AE /* RegViewController.swift */; };
+		D5ECDBF729B4DFD8008F37AE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D5ECDBF629B4DFD8008F37AE /* GoogleService-Info.plist */; };
+		D5ECDBFA29B4E256008F37AE /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = D5ECDBF929B4E256008F37AE /* FirebaseAnalytics */; };
+		D5ECDBFC29B4E256008F37AE /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D5ECDBFB29B4E256008F37AE /* FirebaseAuth */; };
+		D5ECDBFE29B4E256008F37AE /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = D5ECDBFD29B4E256008F37AE /* FirebaseFirestore */; };
+		D5ECDC0029B4E256008F37AE /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = D5ECDBFF29B4E256008F37AE /* FirebaseStorage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,7 +72,7 @@
 		D5ABD9FE2998507B00224D87 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		D5ABDA022998694A00224D87 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		D5ABDA04299987D600224D87 /* LikeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeControl.swift; sourceTree = "<group>"; };
-		D5CFE32729B3E13A00C9A07B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D5CFE32929B41C6600C9A07B /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		D5E167D7298AF48A007FF9D6 /* FriendsTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableVC.swift; sourceTree = "<group>"; };
 		D5E167DB298AF4D9007FF9D6 /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewCell.swift; sourceTree = "<group>"; };
 		D5E167DC298AF4D9007FF9D6 /* FriendsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendsTableViewCell.xib; sourceTree = "<group>"; };
@@ -74,6 +80,8 @@
 		D5E167E3298B49CC007FF9D6 /* PhotosCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionVC.swift; sourceTree = "<group>"; };
 		D5E167E9298B4A50007FF9D6 /* PhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewCell.swift; sourceTree = "<group>"; };
 		D5E167EA298B4A50007FF9D6 /* PhotosCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PhotosCollectionViewCell.xib; path = "Vk client/Photos/PhotosCollectionViewCell.xib"; sourceTree = SOURCE_ROOT; };
+		D5ECDBF429B4D592008F37AE /* RegViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegViewController.swift; sourceTree = "<group>"; };
+		D5ECDBF629B4DFD8008F37AE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +89,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5ECDBFA29B4E256008F37AE /* FirebaseAnalytics in Frameworks */,
+				D5ECDBFE29B4E256008F37AE /* FirebaseFirestore in Frameworks */,
+				D5ECDBFC29B4E256008F37AE /* FirebaseAuth in Frameworks */,
+				D5ECDC0029B4E256008F37AE /* FirebaseStorage in Frameworks */,
 				BCC1A325A269439F0946BB6C /* Pods_Vk_client.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -154,13 +166,15 @@
 				D5E167DF298B1AA2007FF9D6 /* Model */,
 				D5719EC6298470EB00384DC1 /* Main.storyboard */,
 				D543ABED2985BEA200FA7D32 /* LogInVC.swift */,
+				D5CFE32929B41C6600C9A07B /* AuthViewController.swift */,
+				D5ECDBF429B4D592008F37AE /* RegViewController.swift */,
 				D543ABEF2985F85F00FA7D32 /* Service.swift */,
 				D5719EDE29849DB300384DC1 /* Session.swift */,
 				D5719ECE298470EC00384DC1 /* LaunchScreen.storyboard */,
 				D5719EC2298470EB00384DC1 /* SceneDelegate.swift */,
 				D5719EC0298470EB00384DC1 /* AppDelegate.swift */,
 				D5719ED1298470EC00384DC1 /* Info.plist */,
-				D5CFE32729B3E13A00C9A07B /* GoogleService-Info.plist */,
+				D5ECDBF629B4DFD8008F37AE /* GoogleService-Info.plist */,
 				D5719EC9298470EB00384DC1 /* Vk_client.xcdatamodeld */,
 				D5719ECC298470EC00384DC1 /* Assets.xcassets */,
 			);
@@ -226,6 +240,12 @@
 			dependencies = (
 			);
 			name = "Vk client";
+			packageProductDependencies = (
+				D5ECDBF929B4E256008F37AE /* FirebaseAnalytics */,
+				D5ECDBFB29B4E256008F37AE /* FirebaseAuth */,
+				D5ECDBFD29B4E256008F37AE /* FirebaseFirestore */,
+				D5ECDBFF29B4E256008F37AE /* FirebaseStorage */,
+			);
 			productName = "Vk client";
 			productReference = D5719EBD298470EB00384DC1 /* Vk client.app */;
 			productType = "com.apple.product-type.application";
@@ -254,6 +274,9 @@
 				Base,
 			);
 			mainGroup = D5719EB4298470EB00384DC1;
+			packageReferences = (
+				D5ECDBF829B4E256008F37AE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = D5719EBE298470EB00384DC1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -269,7 +292,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5719ED0298470EC00384DC1 /* LaunchScreen.storyboard in Resources */,
-				D5CFE32829B3E13B00C9A07B /* GoogleService-Info.plist in Resources */,
+				D5ECDBF729B4DFD8008F37AE /* GoogleService-Info.plist in Resources */,
 				D56EC949298CA35E00DA9B30 /* AllGroupsTableViewCell.xib in Resources */,
 				D56EC939298C90B000DA9B30 /* PhotosCollectionViewCell.xib in Resources */,
 				D5719ECD298470EC00384DC1 /* Assets.xcassets in Resources */,
@@ -328,11 +351,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5CFE32A29B41C6600C9A07B /* AuthViewController.swift in Sources */,
 				D5E167E4298B49CC007FF9D6 /* PhotosCollectionVC.swift in Sources */,
 				D5E167DD298AF4D9007FF9D6 /* FriendsTableViewCell.swift in Sources */,
 				D5ABDA05299987D600224D87 /* LikeControl.swift in Sources */,
 				D56EC948298CA35E00DA9B30 /* AllGroupsTableViewCell.swift in Sources */,
 				D5719EDF29849DB300384DC1 /* Session.swift in Sources */,
+				D5ECDBF529B4D592008F37AE /* RegViewController.swift in Sources */,
 				D56EC942298C9A2A00DA9B30 /* Group.swift in Sources */,
 				D5719ECB298470EB00384DC1 /* Vk_client.xcdatamodeld in Sources */,
 				D5719EC1298470EB00384DC1 /* AppDelegate.swift in Sources */,
@@ -570,6 +595,40 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D5ECDBF829B4E256008F37AE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D5ECDBF929B4E256008F37AE /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5ECDBF829B4E256008F37AE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		D5ECDBFB29B4E256008F37AE /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5ECDBF829B4E256008F37AE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		D5ECDBFD29B4E256008F37AE /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5ECDBF829B4E256008F37AE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		D5ECDBFF29B4E256008F37AE /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5ECDBF829B4E256008F37AE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		D5719EC9298470EB00384DC1 /* Vk_client.xcdatamodeld */ = {
